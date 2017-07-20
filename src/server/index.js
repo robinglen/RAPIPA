@@ -5,9 +5,7 @@ async function getPerformanceMetricsArray(api, iterations = 10) {
 
   for (let i = 0; i < iterations; i++) {
     const cacheBuster = Math.random();
-    collectionOfPerformanceMetrics.push(
-      await server(`${api}&cacheBuster=${cacheBuster}`)
-    );
+    collectionOfPerformanceMetrics.push(await server(`${api}`));
   }
   return collectionOfPerformanceMetrics;
 }

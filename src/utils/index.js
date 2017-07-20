@@ -1,4 +1,4 @@
-function calculateAverages(performanceMetricsArray) {
+function calculateServerAverages(performanceMetricsArray) {
   const averagesArray = {
     request: [],
     parse: [],
@@ -28,4 +28,19 @@ function calculateAverages(performanceMetricsArray) {
   return averagesArray;
 }
 
-module.exports = calculateAverages;
+function calculateClientAverages(performanceMetricsArray, type) {
+  const averagesArray = {
+    request: [],
+    parse: [],
+    filesize: []
+  };
+
+  for (let audit of performanceMetricsArray) {
+    averagesArray.filesize.push(audit.response.filesize.raw);
+    averagesArray.request.push(audit.response[type].request.raw);
+    averagesArray.parse.push(audit.response[type].parse.raw);
+  }
+  console.log(averagesArray);
+}
+
+module.exports = { calculateServerAverages, calculateClientAverages };

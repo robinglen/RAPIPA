@@ -2,7 +2,7 @@
   "name": "rapipa",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "example:client": "node example/client.js",
     "example:server": "node example/server.js",

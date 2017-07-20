@@ -1,14 +1,21 @@
 const { client } = require('rapip');
 
-const API = 'https://httpbin.org/user-agent';
+async function getPerformanceMetricsArray(api, iterations = 10) {
+  return new Promise((resolve, reject) => {
+    client.framework.listen(3000, async () => {
+      console.log('Listening on port 3000!');
+      const collectionOfPerformanceMetrics = [];
 
-async function runPerformanceTest() {
-  const results = await client.performanceTestApi(API);
-  console.log(results);
-  process.exit(0);
+      for (let i = 0; i < iterations; i++) {
+        const cacheBuster = Math.random();
+        collectionOfPerformanceMetrics.push(
+          await client.performanceTestApi(`${api}`)
+        );
+      }
+
+      resolve(collectionOfPerformanceMetrics);
+    });
+  });
 }
 
-client.framework.listen(3000, () => {
-  console.log('Listening on port 3000!');
-  runPerformanceTest();
-});
+module.exports = getPerformanceMetricsArray;
