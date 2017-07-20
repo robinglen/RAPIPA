@@ -1,0 +1,24 @@
+{
+  "name": "rapipa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "example:client": "node example/client.js",
+    "example:server": "node example/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thearegee/RAPIPA.git"
+  },
+  "author": "Robin Glen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thearegee/RAPIPA/issues"
+  },
+  "homepage": "https://github.com/thearegee/RAPIPA#readme",
+  "dependencies": {
+    "rapip": "^1.0.0"
+  }
+}
