@@ -1,6 +1,7 @@
-const { calculateServerAverages, calculateClientAverages } = require('./utils');
 const client = require('./client');
 const server = require('./server');
+const { calculateServerAverages, calculateClientAverages } = require('./utils');
+const { clientPerformanceGraphs } = require('./graphs');
 
 module.exports = {
   client: client,
@@ -8,5 +9,8 @@ module.exports = {
   utils: {
     calculateClientAverages: calculateClientAverages,
     calculateServerAverages: calculateServerAverages
+  },
+  graphs: {
+    clientPerformanceGraphs: clientPerformanceGraphs
   }
 };

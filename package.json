@@ -6,6 +6,7 @@
   "scripts": {
     "example:client": "node example/client.js",
     "example:server": "node example/server.js",
+    "example:graph": "node example/graph.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/thearegee/RAPIPA#readme",
   "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5",
     "rapip": "^1.0.0"
   }
 }
