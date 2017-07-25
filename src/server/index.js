@@ -1,4 +1,4 @@
-const { server } = require('rapip');
+const { server } = require("rapip");
 
 async function getPerformanceMetricsArray(api, iterations = 10) {
   const collectionOfPerformanceMetrics = [];

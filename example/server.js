@@ -1,12 +1,12 @@
-const { server, utils, graphs } = require('../src');
+const { server, utils, graphs } = require("../src");
 
-const API = 'https://httpbin.org/user-agent';
+const API = "https://httpbin.org/user-agent";
 
 async function getAverageServerPerformanceMetrics() {
-  const performanceMetricsArray = await server(API, 1);
+  const performanceMetricsArray = await server(API, 5);
   const averagesArray = utils.calculateServerAverages(performanceMetricsArray);
   console.log(averagesArray);
-  graphs.clientPerformanceGraphs(averagesArray);
+  process.exit(0);
 }
 
 getAverageServerPerformanceMetrics();

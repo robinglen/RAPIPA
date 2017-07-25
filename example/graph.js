@@ -1,20 +1,37 @@
-const { graphs } = require('../src');
+const { client, graphs, utils } = require("../src");
+
+const API1 = "https://httpbin.org/user-agent";
+const API2 = "https://httpbin.org/ip";
 
 async function drawClientGraph() {
+  const API1AverageArray = await client(API1, 5);
+  const fetchAPI1AverageArray = utils.calculateClientAverages(
+    API1AverageArray,
+    "fetch"
+  );
+  const xhrAPI1AverageArray = utils.calculateClientAverages(
+    API1AverageArray,
+    "xhr"
+  );
+
+  const API2AverageArray = await client(API2, 5);
+  const fetchAPI2AverageArray = utils.calculateClientAverages(
+    API2AverageArray,
+    "fetch"
+  );
+  const xhrAPI2AverageArray = utils.calculateClientAverages(
+    API2AverageArray,
+    "xhr"
+  );
+
   const compareMetrics = [
     {
-      name: 'LAD',
-      metrics: [
-        { request: 85, parse: 4, filesize: 1.05, type: 'fetch' },
-        { request: 11, parse: 1, filesize: 1.05, type: 'xhr' }
-      ]
+      name: "API1",
+      metrics: [fetchAPI1AverageArray, xhrAPI1AverageArray]
     },
     {
-      name: 'LAD2',
-      metrics: [
-        { request: 85, parse: 4, filesize: 1.05, type: 'fetch' },
-        { request: 11, parse: 1, filesize: 1.05, type: 'xhr' }
-      ]
+      name: "API2",
+      metrics: [fetchAPI2AverageArray, xhrAPI2AverageArray]
     }
   ];
 

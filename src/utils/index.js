@@ -8,7 +8,7 @@ function calculateServerAverages(performanceMetricsArray) {
 
   for (let audit of performanceMetricsArray) {
     for (let metric of Object.keys(audit.response)) {
-      if (typeof audit.response[metric].raw !== 'undefined') {
+      if (typeof audit.response[metric].raw !== "undefined") {
         averagesArray[metric].push(audit.response[metric].raw);
       }
     }
@@ -29,20 +29,29 @@ function _calculateAverages(averagesArray) {
   return averagesArray;
 }
 
-function calculateClientAverages(performanceMetricsArray, type = 'fetch') {
+function calculateClientAverages(performanceMetricsArray, type = "fetch") {
   const averagesArray = {
     request: [],
     parse: [],
     filesize: []
+  };
+  const fixedItems = {
+    gzipEnabled: false,
+    api: ""
   };
 
   for (let audit of performanceMetricsArray) {
     averagesArray.filesize.push(audit.response.filesize.raw);
     averagesArray.request.push(audit.response[type].request.raw);
     averagesArray.parse.push(audit.response[type].parse.raw);
+    fixedItems.gzipEnabled = audit.response.gzipEnabled;
+    fixedItems.api = audit.response.api;
   }
+
   const averages = _calculateAverages(averagesArray);
   averages.type = type;
+  averages.gzipEnabled = fixedItems.gzipEnabled;
+  averages.api = fixedItems.api;
   return averages;
 }
 
