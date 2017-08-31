@@ -13,7 +13,7 @@ function calculateServerAverages(performanceMetricsArray) {
       }
     }
   }
-  
+
   return _calculateAverages(averagesArray);
 }
 
