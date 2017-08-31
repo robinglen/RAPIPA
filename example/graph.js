@@ -4,7 +4,7 @@ const API1 = 'https://httpbin.org/user-agent';
 const API2 = 'https://httpbin.org/ip';
 
 async function drawClientGraph() {
-  const API1AverageArray = await client(API1, 5);
+  const API1AverageArray = await client(API1, 1);
   const fetchAPI1AverageArray = utils.calculateClientAverages(
     API1AverageArray,
     'fetch'
@@ -14,7 +14,7 @@ async function drawClientGraph() {
     'xhr'
   );
 
-  const API2AverageArray = await client(API2, 5);
+  const API2AverageArray = await client(API2, 1);
   const fetchAPI2AverageArray = utils.calculateClientAverages(
     API2AverageArray,
     'fetch'

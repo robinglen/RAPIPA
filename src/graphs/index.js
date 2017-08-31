@@ -25,8 +25,8 @@ function clientPerformanceGraphs(metrics) {
 function buildGraph(columnNumber, audit, grid, index) {
   const metadata = grid.set(0, columnNumber, 1, 1, contrib.markdown);
   metadata.setMarkdown(
-    `# ${audit.name} \n\n * Filesize: ${audit.metrics[index]
-      .filesize}kb \n * gZip enabled: ${audit.metrics[index]
+    `# ${audit.name} \n\n * size: ${audit.metrics[index]
+      .size}kb \n * gZip enabled: ${audit.metrics[index]
       .gzipEnabled} \n * api: ${audit.metrics[index].api}`
   );
 

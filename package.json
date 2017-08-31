@@ -23,6 +23,6 @@
   "dependencies": {
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.7.5",
-    "rapip": "^1.0.0"
+    "rapip": "^2.0.1"
   }
 }

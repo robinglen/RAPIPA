@@ -4,6 +4,7 @@ const API = "https://httpbin.org/user-agent";
 
 async function getAverageServerPerformanceMetrics() {
   const performanceMetricsArray = await client(API, 5);
+
   const fetchAveragesArray = utils.calculateClientAverages(
     performanceMetricsArray,
     "fetch"

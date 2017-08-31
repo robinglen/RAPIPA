@@ -2,7 +2,7 @@ function calculateServerAverages(performanceMetricsArray) {
   const averagesArray = {
     request: [],
     parse: [],
-    responseSize: [],
+    size: [],
     stringify: []
   };
 
@@ -13,7 +13,7 @@ function calculateServerAverages(performanceMetricsArray) {
       }
     }
   }
-
+  
   return _calculateAverages(averagesArray);
 }
 
@@ -33,7 +33,7 @@ function calculateClientAverages(performanceMetricsArray, type = 'fetch') {
   const averagesArray = {
     request: [],
     parse: [],
-    filesize: []
+    size: []
   };
   const fixedItems = {
     gzipEnabled: false,
@@ -41,7 +41,7 @@ function calculateClientAverages(performanceMetricsArray, type = 'fetch') {
   };
 
   for (let audit of performanceMetricsArray) {
-    averagesArray.filesize.push(audit.response.filesize.raw);
+    averagesArray.size.push(audit.response.size.raw);
     averagesArray.request.push(audit.response[type].request.raw);
     averagesArray.parse.push(audit.response[type].parse.raw);
     // it doesn't matter these are over written as they are the same

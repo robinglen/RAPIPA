@@ -16,48 +16,49 @@ const MATCHES =
 //   'https://ecomm.ynap.biz/os/os1/search/resources/store/Moncler_GB/productview/byCategory/3074457345616678867?pageSize=50&pageNumber=1';
 
 async function drawClientGraph() {
-  // const LADAverageArray = await client(LAD, INTERATOR);
-  // const fetchLADAverageArray = utils.calculateClientAverages(
-  //   LADAverageArray,
-  //   'fetch'
-  // );
-  // const xhrLADAverageArray = utils.calculateClientAverages(
-  //   LADAverageArray,
-  //   'xhr'
-  // );
-  //
-  // const POLYJUICEAverageArray = await client(POLYJUICE, INTERATOR);
-  // const fetchPOLYJUICEAverageArray = utils.calculateClientAverages(
-  //   POLYJUICEAverageArray,
-  //   'fetch'
-  // );
-  // const xhrPOLYJUICEAverageArray = utils.calculateClientAverages(
-  //   POLYJUICEAverageArray,
-  //   'xhr'
-  // );
-
-  const MATCHESAverageArray = await client(MATCHES, INTERATOR);
-  const fetchMATCHESAverageArray = utils.calculateClientAverages(
-    MATCHESAverageArray,
+  const LADAverageArray = await client(LAD, INTERATOR);
+  const fetchLADAverageArray = utils.calculateClientAverages(
+    LADAverageArray,
     'fetch'
   );
-  const xhrMATCHESAverageArray = utils.calculateClientAverages(
-    MATCHESAverageArray,
+  const xhrLADAverageArray = utils.calculateClientAverages(
+    LADAverageArray,
     'xhr'
   );
 
+  const POLYJUICEAverageArray = await client(POLYJUICE, INTERATOR);
+  const fetchPOLYJUICEAverageArray = utils.calculateClientAverages(
+    POLYJUICEAverageArray,
+    'fetch'
+  );
+  const xhrPOLYJUICEAverageArray = utils.calculateClientAverages(
+    POLYJUICEAverageArray,
+    'xhr'
+  );
+
+  // const MATCHESAverageArray = await client(MATCHES, INTERATOR);
+  // const fetchMATCHESAverageArray = utils.calculateClientAverages(
+  //   MATCHESAverageArray,
+  //   'fetch'
+  // );
+  // const xhrMATCHESAverageArray = utils.calculateClientAverages(
+  //   MATCHESAverageArray,
+  //   'xhr'
+  // );
+
   const compareMetrics = [
-    // {
-    //   name: 'LAD',
-    //   metrics: [fetchLADAverageArray, xhrLADAverageArray]
-    // },
-    // {
-    //   name: 'POLYJUICE'sLYJUICEAverageArray, xhrPOLYJUICEAverageArray]
-    // },
     {
-      name: 'MATCHES',
-      metrics: [fetchMATCHESAverageArray, xhrMATCHESAverageArray]
+      name: 'LAD',
+      metrics: [fetchLADAverageArray, xhrLADAverageArray]
+    },
+    {
+      name: 'POLYJUICE',
+      metrics: [fetchPOLYJUICEAverageArray, xhrPOLYJUICEAverageArray]
     }
+    // {
+    //   name: 'MATCHES',
+    //   metrics: [fetchMATCHESAverageArray, xhrMATCHESAverageArray]
+    // }
   ];
 
   graphs.clientPerformanceGraphs(compareMetrics);
