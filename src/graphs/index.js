@@ -9,6 +9,8 @@ function clientPerformanceGraphs(metrics) {
     screen: screen
   });
 
+  console.log(metrics);
+
   let columnNumber = 0;
 
   metrics.forEach(audit => {
